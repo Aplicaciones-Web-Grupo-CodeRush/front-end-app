@@ -1,6 +1,12 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import 'primeicons/primeicons.css';
+
+import 'primevue/resources/themes/md-light-indigo/theme.css';
+import 'primevue/resources/primevue.min.css';
+
+import DialogService        from "primevue/dialogservice";
+import ToastService         from "primevue/toastservice";
+import ConfirmationService  from "primevue/confirmationservice";
+
 import Button from "primevue/button";
 import Card from "primevue/card";
 import Column from "primevue/column";
@@ -24,7 +30,14 @@ import Textarea from "primevue/textarea";
 import Toolbar from "primevue/toolbar";
 import Toast from "primevue/toast";
 
-createApp(App).mount('#app')
+import router from "./router/index.js";
+import PrimeVue from "primevue/config";
+import {createApp} from "vue";
+import app from "./app.vue";
+import './style.css'
+
+
+createApp(app)
     .use(router)
     .use(PrimeVue, { ripple: true})
     .use(ConfirmationService)

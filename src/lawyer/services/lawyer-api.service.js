@@ -1,7 +1,11 @@
-import axios from "axios"
+import http from "../../shared/services/http-common.js";
 
-const http = axios.create({
-    baseURL: 'https://github.com/Aplicaciones-Web-Grupo-CodeRush/lawyers/blob/main/db.json'
-})
+export class lawyerApiService {
+    static getAll() {
+        return http.get("/lawyers");
+    }
 
-const hola = 'hola';
+    findByTitle(title) {
+        return http.get(`/lawyers?title=${title}`);
+    }
+}

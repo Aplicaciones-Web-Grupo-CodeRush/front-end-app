@@ -41,13 +41,13 @@ export default {
       <pv-button label="Filters" class="filter-button" @click="openFilterDialog"></pv-button>
       <div class="search-container">
         <div class="p-inputgroup">
-          <input type="text" placeholder="Search" v-model="searchTerm" /> <!-- Aquí se ha eliminado el evento @input -->
+          <input type="text" placeholder="Search" v-model="searchTerm" />
         </div>
       </div>
     </div>
   </div>
   <div class="parent-container">
-    <div v-for="(lawyer, index) in filteredLawyers" :key="lawyer.id" class="card-container flex-container"> <!-- Aquí se ha cambiado lawyers por filteredLawyers -->
+    <div v-for="(lawyer, index) in filteredLawyers" :key="lawyer.id" class="card-container flex-container">
       <pv-card class="p-mr-2 card-item flex-item">
         <template #content>
           <img :src="lawyer.urlToImage" alt="Lawyer Image" class="lawyer-image">

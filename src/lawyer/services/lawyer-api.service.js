@@ -8,4 +8,8 @@ export class lawyerApiService {
     findByTitle(title) {
         return http.get(`/lawyers?title=${title}`);
     }
+
+    getLawyerDetails(id) {
+        return http.get(`/lawyers/${id}`);
+    }
 }

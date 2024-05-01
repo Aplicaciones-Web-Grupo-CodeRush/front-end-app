@@ -5,7 +5,8 @@
       data() {
         return {
           items: [
-            { label: 'Lawyers', to: '/abogados' }
+            { label: 'Lawyers', to: '/abogados' },
+            { label: 'Subscription', to: '/subscription' }
           ],
         }
       },

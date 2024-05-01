@@ -1,5 +1,5 @@
 <script>
-import { lawyerApiService} from "../../../lawyer/services/lawyer-api.service.js";
+import { lawyerApiService } from "../../../lawyer/services/lawyer-api.service.js";
 
 export default {
   name: "lawyers-profile",
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <pv-dialog v-if="lawyer" :visible.sync="dialogVisible" :modal="true" :closable="false" >
+  <pv-dialog v-if="lawyer" :visible.sync="dialogVisible" :modal="true" :closable="false" class="p-dialog" >
     <template #header>
       <pv-button label="Close" @click="closeDialog" class="close-button"></pv-button>
     </template>
@@ -50,16 +50,16 @@ export default {
         </div>
         <div class="card-details">
           <h2>{{lawyer.name}}</h2>
-          <p>Especialidad: {{lawyer.specialization}}</p>
-          <p>Años de experiencia: {{lawyer.yearsOfExperience}}</p>
-          <p>Casos ganados: {{lawyer.casesWon}}</p>
-          <p>Precio: {{lawyer.price}}</p>
+          <p>Speciality: {{lawyer.specialization}}</p>
+          <p>Years of Experience: {{lawyer.yearsOfExperience}}</p>
+          <p>Cases Wons: {{lawyer.casesWon}}</p>
+          <p>Price: {{lawyer.price}}</p>
         </div>
       </div>
       <div class="card-lower">
-        <h2>Información de contacto:</h2>
+        <h2>Contact Information:</h2>
         <div class="contact-info">
-          <p>Teléfono: {{lawyer.phoneNumber}}</p>
+          <p>Phone: {{lawyer.phoneNumber}}</p>
           <p>Email: {{lawyer.email}}</p>
         </div>
       </div>
@@ -68,8 +68,8 @@ export default {
 </template>
 
 <style scoped>
-.p-dialog .p-dialog-header {
-  background-color: #F2EFDC !important;
+:deep(.p-dialog) {
+  background-color: #a89226 !important;
   border-radius: 20px 20px 0 0;
 }
 
@@ -82,16 +82,17 @@ export default {
 }
 
 .close-button {
-  background-color: #F2EFDC;
+  color : #000000;
+  background-color: #f2eedb;
 }
 
 .card-upper {
   display: flex;
   padding: 20px;
+  margin: 20px;
   flex-wrap: wrap;
   background-color: #F2EFDC;
   border-radius: 20px;
-  margin-bottom: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0, 0, 0.2);
 }
 
@@ -118,6 +119,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin: 20px;
   flex-wrap: wrap;
   border-radius: 20px;
   background-color: #F2EFDC;

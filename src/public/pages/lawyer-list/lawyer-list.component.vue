@@ -1,13 +1,18 @@
 <script>
 import { lawyerApiService } from '../../../lawyer/services/lawyer-api.service.js';
+import LawyerProfile from "./lawyer-profile.component.vue";
 
 export default {
   name: "abogados",
+  components: {
+    'lawyer-profile': LawyerProfile
+  },
   data() {
     return {
       lawyers: [],
       searchTerm: '',
-      filteredLawyers: []
+      filteredLawyers: [],
+      selectedLawyerId: null
     }
   },
   created() {
@@ -30,6 +35,12 @@ export default {
       } else {
         this.filteredLawyers = this.lawyers;
       }
+    },
+    selectLawyer(id) {
+      this.selectedLawyerId = id;
+    },
+    closeProfile() {
+      this.selectedLawyerId = null;
     }
   }
 }
@@ -60,10 +71,11 @@ export default {
         <template #content>
           <p>Years of Experience: {{ lawyer.yearsOfExperience }}</p>
           <p>Price: {{ lawyer.price }}</p>
-          <pv-button label="Review" class="p-mt-2"></pv-button>
+          <pv-button label="Review"  @click="selectLawyer(lawyer.id)" class="p-mt-2"></pv-button>
         </template>
       </pv-card>
     </div>
+    <lawyer-profile :lawyerId="selectedLawyerId" @close="closeProfile"></lawyer-profile>
   </div>
 </template>
 

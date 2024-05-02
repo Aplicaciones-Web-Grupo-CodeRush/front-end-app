@@ -1,7 +1,12 @@
 <script>
 
+import SubscriptionPayComponent from "./subscription-pay.component.vue";
+
 export default {
   name: "subscription",
+  components: {
+    'subscription-pay': SubscriptionPayComponent
+  },
   data() {
     return {
       dialogVisible: false
@@ -54,6 +59,7 @@ export default {
         </template>
       </pv-card>
     </div>
+    <subscription-pay v-if="dialogVisible" @close="closeDialog"></subscription-pay>
   </div>
 </template>
 

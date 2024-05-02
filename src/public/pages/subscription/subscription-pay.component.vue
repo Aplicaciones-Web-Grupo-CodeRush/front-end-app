@@ -70,11 +70,6 @@ export default {
 .dialog-container{
   max-width: 500px;
 }
-
-.sub-pay-container {
-  display: flex;
-}
-
 .close-button{
   background-color: #F29979;
   color: #000000;

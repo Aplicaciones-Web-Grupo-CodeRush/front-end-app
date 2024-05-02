@@ -60,7 +60,7 @@ export default {
 <style scoped>
 .subscription-container{
   display: flex;
-  flex: wrap;
+
 }
 .card-1 {
   display: flex;

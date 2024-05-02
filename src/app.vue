@@ -6,7 +6,8 @@
         return {
           items: [
             { label: 'Lawyers', to: '/abogados' },
-            { label: 'Subscription', to: '/subscription' }
+            { label: 'Subscription', to: '/subscription' },
+            { label: 'Review', to: '/reviews'}
           ],
         }
       },

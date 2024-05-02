@@ -1,12 +1,12 @@
 export class ReviewDetails {
     constructor(id = 0,
-                lawyerId = 0,
+                lawyerName = '',
                 time = Date(),
                 rType = '',
                 price=0.00,
                 description = '') {
         this.id = id;
-        this.lawyerId = lawyerId;
+        this.lawyerName = lawyerName;
         this.time = time;
         this.rType = rType;
         this.price= price;

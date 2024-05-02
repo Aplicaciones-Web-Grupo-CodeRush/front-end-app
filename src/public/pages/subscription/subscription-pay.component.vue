@@ -28,38 +28,38 @@ export default {
       <pv-button label="Return" @click="closeDialog" class="close-button"></pv-button>
     </template>
     <pv-card class="card-info">
-      <template #title>Consideraciones</template>
+      <template #title>Considerations</template>
       <template #content>
         <div class="pay-title">
-          <p>Solo proceda con el pago si es que ya lo ha acordado previamente con el abogado
-            en cuestión, pues el costo del servicio puede variar del precio habitual. Si está completamente
-            seguro, rellene la información abajo para poder efectuar el pago correspondiente.</p>
-          <h2>Pago con Tarjeta</h2>
+          <p>Only proceed with the payment if you have previously agreed with the lawyer
+            in question, since the cost of the service may vary from the usual price. If it is completely
+            Sure, fill out the information below to be able to make the corresponding payment.</p>
+          <h2>Card payment</h2>
         </div>
 
         <div class="pay-container">
           <div class="pay-1 ">
             <div>
-              <b>Numero de Tarjeta: </b>
+              <b>Card number: </b>
               <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX">
             </div>
             <div>
-              <b>Monto a pagar: </b>
+              <b>Amount payable: </b>
               <input type="text" placeholder="S/ 0.00">
             </div>
           </div>
           <div class="pay-1">
             <div>
-              <b>Fecha de Caducidad: </b>
-              <input type="text" placeholder="MM/AA">
+              <b>Date of Expiry: </b>
+              <input type="text" placeholder="MM/YY">
             </div>
             <div>
-              <b>Código de Seguridad: </b>
+              <b>Security code: </b>
               <input type="text" placeholder="XXX">
             </div>
           </div>
         </div>
-        <pv-button class="close-button m-0">Continuar</pv-button>
+        <pv-button class="close-button m-0">Continue</pv-button>
       </template>
     </pv-card>
   </pv-dialog>

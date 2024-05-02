@@ -27,34 +27,34 @@ export default {
   <div class="subscription-container">
     <div class="flex card-1">
       <pv-card class="card-info">
-        <template #title>Ayuda Legal:</template>
+        <template #title>Legal help:</template>
         <template #content>
           <p class="m-0">
-            Para médicos que buscan asistencia legal
-            especializada de parte de nuestros abogados expertos en medicina legal.
-            Este grupo ingluye a profesionales médicos de diversas especialidades,
-            desde médicos generales hasta cirujanos y especialistas en áreas específicas
-            como la obstetricia, oncología o la neurología.
+            For doctors seeking specialized legal assistance from our
+            expert legal medicine lawyers. This group includes medical
+            professionals from various specialties, from general practitioners
+            to surgeons and specialists in specific areas such as obstetrics,
+            oncology or neurology.
           </p>
         </template>
         <template #footer>
           <div class="flex gap-3 mt-1">
-            <pv-button class="card-button">Adquirir</pv-button>
+            <pv-button class="card-button">Purchase</pv-button>
           </div>
         </template>
       </pv-card>
     </div>
     <div class="flex card-2">
       <pv-card class="card-info">
-        <template #title>Suscripción Mensual:</template>
+        <template #title>Monthly Subscription:</template>
         <template #content>
-          <p>Para todas las personas que buscan adquirir nuestras suscripciones para obtener
-            acceso a consultas y consejos legales de mano de abogados especializados en medicina.
-            La suscripción dura 30 días a partir de la fecha y hora en que se compró.</p>
+          <p>For all people looking to purchase our subscriptions to obtain
+            access to consultations and legal advice from lawyers specialized in medicine.
+            The subscription lasts 30 days from the date and time it was purchased.</p>
         </template>
         <template #footer>
           <div class="flex gap-3 mt-1">
-            <pv-button class="card-button" @click="openDialog">Adquirir</pv-button>
+            <pv-button class="card-button" @click="openDialog">Purchase</pv-button>
           </div>
         </template>
       </pv-card>
@@ -66,7 +66,8 @@ export default {
 <style scoped>
 .subscription-container{
   display: flex;
-
+  height: 500px;
+  align-items: center;
 }
 .card-1 {
   display: flex;

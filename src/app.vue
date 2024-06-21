@@ -7,7 +7,8 @@
           items: [
             { label: 'Lawyers', to: '/abogados' },
             { label: 'Subscription', to: '/subscription' },
-            { label: 'Review', to: '/reviews'}
+            { label: 'Review', to: '/reviews'},
+            { label: 'Educational Resources', to: '/educational-resources' }
           ],
         }
       },

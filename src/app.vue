@@ -8,7 +8,9 @@
             { label: 'Lawyers', to: '/abogados' },
             { label: 'Subscription', to: '/subscription' },
             { label: 'Review', to: '/reviews'},
-            { label: 'Educational Resources', to: '/educational-resources' }
+            { label: 'Educational Resources', to: '/educational-resources' },
+            { label: 'Sign Up', to: '/sign-up'},
+            { label: 'Sign In', to: '/sign-in'}
           ],
         }
       },

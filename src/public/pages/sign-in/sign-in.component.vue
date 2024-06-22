@@ -1,9 +1,19 @@
 <script>
 import { useRouter } from 'vue-router'
+import { inject, onMounted, onUnmounted } from 'vue';
 
 export default {
   name: 'sign-in',
   setup() {
+    const showToolbar = inject('showToolbar');
+
+    onMounted(() => {
+      showToolbar.value = false;
+    });
+
+    onUnmounted(() => {
+      showToolbar.value = true;
+    });
     const router = useRouter()
 
     const email = ''
@@ -28,96 +38,117 @@ export default {
 </script>
 
 <template>
-<div class="sign-in-structure">
-  <pv-card class="img-card" style="width: 500px !important; height: 800px">
-    <template #content>
-      <div class="img-container">
-        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/0df7864b-98fb-49c3-a232-dce0c30d90ab-profile_image-300x300.png" alt="Logo" class="logo" />
-      </div>
-    </template>
-  </pv-card>
-  <pv-card class="form-card" style="width: 600px !important; height: 800px">
-    <template #content>
-      <div class="card-info">
-        <div style="text-align:left; font-size: 30px"><h2>Enter your account</h2></div>
-        <br><br>
-        <div style="text-align: left; font-size: 15px"><h2>Not registered?</h2></div>
-        <div>
-        <router-link to="/sign-up" target="_blank" rel="noopener">
-          <pv-button label="Create Account" />
-        </router-link>
-        </div>
-        <br>
-        <pv-float-label>
-          <pv-input-text id="email" v-model="email" />
-          <label for="email">Enter your Email</label>
-        </pv-float-label>
-        <pv-float-label>
-          <pv-input-text id="password" v-model="password" />
-          <label for="email">Enter your Password</label>
-        </pv-float-label>
-        <router-link to="/abogados" target="_blank" rel="noopener">
-          <pv-button label="Login" />
-        </router-link>
-      </div>
-    </template>
-  </pv-card>
-</div>
-
-
+  <div class="background">
+    <div class="card-container">
+      <pv-card class="card left-card">
+        <template #content>
+          <div class="img-left-card">
+            <img src="https://github.com/Aplicaciones-Web-Grupo-CodeRush/Informe-Final/raw/Chapter-04/assets/imgs/Logo%20-%20MedicDefense.png" alt="Imagen">
+          </div>
+        </template>
+      </pv-card>
+      <pv-card class="card right-card">
+        <template #content>
+          <div class="form-card">
+            <h2>Enter your account</h2>
+            <p>¿Not registered yet? <pv-button @click="goToRegister">Create account</pv-button></p>
+            <pv-input-text v-model="email" placeholder="Email" class="input"></pv-input-text>
+            <pv-input-text v-model="password" placeholder="Password" class="input" type="password"></pv-input-text>
+            <pv-button @click="login" style="color: black; background-color: #F29979" class="submit-button">Login</pv-button>
+          </div>
+        </template>
+      </pv-card>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.sign-in-structure {
+.background {
+  background-image: url("https://aplicaciones-web-grupo-coderush.github.io/Landing-page-MedicDefense/assets/img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url("https://pbs.twimg.com/profile_images/1512157485301473285/nLBZi0B3_400x400.jpg");
-  background-attachment: fixed;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.left-card {
+  width: 100%;
+  height: 58vh;
+  max-height: 100%;
+  background-image: url("https://images.pexels.com/photos/129733/pexels-photo-129733.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.img-card {
-  width: 40%;
-  height: auto;
+.img-left-card {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV7W3JUM_eQPONo39NLu4O9RTmEoEx8h-6RA&s");
-}
-
-img-card-logo {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: left;
-}
-
-.img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.card-info {
-  display: flex;
-  flex-direction: column;
   padding: 20px;
-  justify-content: center;
-  align-content: center;
-  max-width: 500px;
+}
+
+.img-left-card img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .form-card {
-  width: 180px;
+  width: 100%;
+  height: 58vh;
+  max-height: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 20px;
+  align-items: center;
 }
 
+.input {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .form-card {
+    padding: 10px;
+    height: auto;
+  }
+}
 </style>

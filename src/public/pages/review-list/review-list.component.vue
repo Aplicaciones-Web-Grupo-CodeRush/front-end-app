@@ -2,16 +2,21 @@
 import { reviewApiService } from '../../../review/services/review-api.service.js';
 import { lawyerApiService } from '../../../lawyer/services/lawyer-api.service.js';
 import {Lawyer} from "../../../lawyer/model/lawyer.entity.js";
+import SubscriptionPayComponent from "../subscription/subscription-pay.component.vue";
 
 export default {
   name: "reviews",
+  components: {
+    'subscription-pay': SubscriptionPayComponent
+  },
   data() {
     return {
       reviews: [],
       searchTerm: '',
       legalSupportReviews: [],
       consultationReviews: [],
-      lawyer: new Lawyer()
+      lawyer: new Lawyer(),
+      dialogVisible: false
     }
   },
   created() {
@@ -29,6 +34,12 @@ export default {
       service.getLawyerDetails(id).then(response => {
         this.lawyer = response.data;
       });
+    },
+    openDialog() {
+      this.dialogVisible = true;
+    },
+    closeDialog() {
+      this.dialogVisible = false;
     }
   }
 }
@@ -38,7 +49,7 @@ export default {
   <div class="review-lists">
     <div class="legal-support-container">
       <h2>Legal Services</h2>
-      <div v-for="(review, index) in legalSupportReviews" :key="review.id" class="card-container flex-container">
+      <div v-for="(review) in legalSupportReviews" :key="review.id" class="card-container flex-container">
         <pv-card class="card-item flex-item">
           <template #title>
             <div  class="card-title">
@@ -52,6 +63,11 @@ export default {
             <p>{{ review.description }}</p>
           </template>
         </pv-card>
+      </div>
+      <div class="redirects">
+        <router-link to="/abogados">
+          <pv-button class="re-button">Request Legal Case</pv-button>
+        </router-link>
       </div>
     </div>
     <div class="consultation-container">
@@ -70,6 +86,10 @@ export default {
             <p>{{ review.description }}</p>
           </template>
         </pv-card>
+      </div>
+      <div class="redirects">
+        <pv-button class="re-button" @click="openDialog">Make a Consultation</pv-button>
+        <subscription-pay v-if="dialogVisible" @close="closeDialog"></subscription-pay>
       </div>
     </div>
   </div>
@@ -147,6 +167,22 @@ export default {
 
 .flex-item {
   flex: 1;
+}
+.redirects{
+  justify-items:center;
+  flex-direction: row;
+}
+
+.re-button {
+  background-color: #F29979;
+  color: #000000;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-bottom: 30px;
+  border-radius: 30px;
+  font-size: 18px;
 }
 
 </style>

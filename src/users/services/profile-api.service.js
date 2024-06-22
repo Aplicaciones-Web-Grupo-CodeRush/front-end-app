@@ -25,4 +25,14 @@ export class UsersApiService {
             return null;
         }
     }
+
+    async updateUser(user) {
+        try {
+            const response = await axios.put(`${this.BASE_URL}/${user.id}`, user);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    }
 }

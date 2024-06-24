@@ -32,6 +32,7 @@ import Toast from "primevue/toast";
 
 import router from "./router/index.js";
 import PrimeVue from "primevue/config";
+import {computed} from "vue";
 import {createApp} from "vue";
 import app from "./app.vue";
 import './style.css'
@@ -43,6 +44,7 @@ createApp(app)
     .use(ConfirmationService)
     .use(DialogService)
     .use(ToastService)
+    .use(computed)
     .component('pv-button', Button)
     .component('pv-card', Card)
     .component('pv-column', Column)

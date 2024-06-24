@@ -10,15 +10,14 @@ import signUpComponent from "../public/pages/sign-up/sign-up.component.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
+        { path: '/sign-in', component: signInComponent, meta: { title: 'sign-in'}},
+        { path: '/sign-up', component: signUpComponent, meta: { title: 'sign-up'}},
         { path: '/abogados', component: lawyerListComponent, meta: { title: 'abogados'}},
         { path: '/subscription', component: subscriptionComponent, meta: { title: 'subscription'}},
-        { path: '/', redirect: '/abogados'},
+        { path: '/', redirect: '/sign-in'},
         { path: '/perfil', component: ProfileUser, meta: { title: 'Perfil'}},
         { path: '/reviews', component: reviewListComponent, meta: {title: 'reviews'}},
-        { path: '/educational-resources', component: educationalResourceComponent, meta: {title: 'Educational Resources'}},
-        { path: '/sign-up', component: signUpComponent, meta: { title: 'sign-up'}},
-        { path: '/sign-in', component: signInComponent, meta: { title: 'sign-in'}}
-
+        { path: '/educational-resources', component: educationalResourceComponent, meta: {title: 'Educational Resources'}}
     ]
 });
 

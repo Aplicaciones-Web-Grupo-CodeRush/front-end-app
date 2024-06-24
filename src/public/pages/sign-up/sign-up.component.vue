@@ -1,6 +1,7 @@
 <script>
 import { useRouter } from 'vue-router'
-import { inject, onMounted, onUnmounted } from 'vue';
+import {inject, onMounted, onUnmounted, ref} from 'vue';
+import { computed } from "vue";
 
 export default {
   name: 'sign-up',
@@ -17,11 +18,16 @@ export default {
 
     const router = useRouter()
 
-    const name = ''
-    const email = ''
-    const dni = ''
-    const password = ''
-    const confirmPassword = ''
+    const name = ref('')
+    const email = ref('')
+    const dni = ref('')
+    const password = ref('')
+    const confirmPassword = ref('')
+
+    const isFormValid = computed(() => {
+      return name.value.length > 0 && email.value.length > 0 && dni.value.length > 0 && password.value.length > 0 && confirmPassword.value.length > 0;
+    });
+
 
     const goToLogin = () => {
       router.push('/sign-in')
@@ -38,7 +44,8 @@ export default {
       password,
       confirmPassword,
       goToLogin,
-      signUp
+      signUp,
+      isFormValid
     }
   }
 }
@@ -63,7 +70,7 @@ export default {
             <pv-input-text v-model="dni" placeholder="DNI" class="input"></pv-input-text>
             <pv-input-text v-model="password" placeholder="Password" class="input" type="password"></pv-input-text>
             <pv-input-text v-model="confirmPassword" placeholder="Confirm Password" class="input" type="password"></pv-input-text>
-            <pv-button @click="signUp" style="color: black; background-color: #F29979" class="submit-button">Register</pv-button>
+            <pv-button :disabled="!isFormValid" @click="signUp" style="color: black; background-color: #F29979" class="submit-button">Register</pv-button>
           </div>
         </template>
       </pv-card>

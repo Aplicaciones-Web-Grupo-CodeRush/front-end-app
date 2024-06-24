@@ -1,11 +1,23 @@
 <script>
 
 import SubscriptionPayComponent from "./subscription-pay.component.vue";
+import {useRouter} from "vue-router";
 
 export default {
   name: "subscription",
   components: {
     'subscription-pay': SubscriptionPayComponent
+  },
+  setup() {
+    const router = useRouter();
+
+    const goToLawyers = () => {
+      router.push({ name: 'abogados' });
+    };
+
+    return {
+      goToLawyers
+    };
   },
   data() {
     return {
@@ -39,7 +51,7 @@ export default {
         </template>
         <template #footer>
           <div class="flex gap-3 mt-1">
-            <pv-button class="card-button">Purchase</pv-button>
+            <pv-button class="card-button" @click="goToLawyers">Go</pv-button>
           </div>
         </template>
       </pv-card>

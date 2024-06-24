@@ -31,7 +31,7 @@
             <pv-button :href="href" class="p-button-text text-white" @click="navigate">{{ item.label }}</pv-button>
           </router-link>
           <router-link to="/perfil">
-            <pv-button class="p-button-text text-white">Perfil</pv-button>
+            <pv-button class="p-button-text text-white">Profile</pv-button>
           </router-link>
         </div>
       </template>

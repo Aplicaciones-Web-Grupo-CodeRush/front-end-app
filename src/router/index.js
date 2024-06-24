@@ -3,6 +3,8 @@ import lawyerListComponent from "../public/pages/lawyer-list/lawyer-list.compone
 import subscriptionComponent from "../public/pages/subscription/subscription.component.vue";
 import ProfileUser from "../public/pages/profile-users/profile-user.component.vue";
 import reviewListComponent from "../public/pages/review-list/review-list.component.vue";
+import educationalResourceComponent from "../public/pages/educational-resource/educational-resource.component.vue";
+
 
 
 const router = createRouter({
@@ -13,6 +15,7 @@ const router = createRouter({
         { path: '/', redirect: '/abogados'},
         { path: '/perfil', component: ProfileUser, meta: { title: 'Perfil'}},
         { path: '/reviews', component: reviewListComponent, meta: {title: 'reviews'}},
+        { path: '/educational-resources', component: educationalResourceComponent, meta: {title: 'Educational Resources'}},
     ]
 });
 

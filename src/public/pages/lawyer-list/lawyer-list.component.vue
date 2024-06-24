@@ -138,6 +138,7 @@ export default {
 .search-container {
   width: 100%;
   flex-grow: 1;
+  margin-top:30px
 }
 
 .p-inputgroup input {

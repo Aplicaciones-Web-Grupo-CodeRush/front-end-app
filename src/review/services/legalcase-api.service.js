@@ -1,7 +1,7 @@
 import http from "../../shared/services/http-common.js";
 
-export class reviewApiService {
+export class legalcaseApiService {
     static getAll() {
-        return http.get("/reviews");
+        return http.get("/legal-case");
     }
 }

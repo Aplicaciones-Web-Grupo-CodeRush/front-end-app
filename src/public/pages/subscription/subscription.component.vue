@@ -1,37 +1,49 @@
 <script>
-
+import { ref } from 'vue';
 import SubscriptionPayComponent from "./subscription-pay.component.vue";
-import {useRouter} from "vue-router";
+import SubscriptionDoneComponent from "./subscription-done.component.vue";
 
 export default {
   name: "subscription",
   components: {
-    'subscription-pay': SubscriptionPayComponent
+    'subscription-pay': SubscriptionPayComponent,
+    'subscription-done': SubscriptionDoneComponent
   },
   setup() {
-    const router = useRouter();
+    const payDialogVisible = ref(false);
+    const doneDialogVisible = ref(false);
 
-    const goToLawyers = () => {
-      router.push({ name: 'abogados' });
+    const openPayDialog = () => {
+      payDialogVisible.value = true;
+    };
+
+    const closePayDialog = () => {
+      payDialogVisible.value = false;
+    };
+
+    const openDoneDialog = () => {
+      doneDialogVisible.value = true;
+    };
+
+    const closeDoneDialog = () => {
+      doneDialogVisible.value = false;
+    };
+
+    const handlePaymentDone = () => {
+      closePayDialog();
+      openDoneDialog();
     };
 
     return {
-      goToLawyers
+      payDialogVisible,
+      doneDialogVisible,
+      openPayDialog,
+      closePayDialog,
+      openDoneDialog,
+      closeDoneDialog,
+      handlePaymentDone
     };
-  },
-  data() {
-    return {
-      dialogVisible: false
-    }
-  },
-  methods: {
-    openDialog() {
-      this.dialogVisible = true;
-    },
-    closeDialog() {
-      this.dialogVisible = false;
-    }
-  },
+  }
 }
 </script>
 
@@ -66,12 +78,13 @@ export default {
         </template>
         <template #footer>
           <div class="flex gap-3 mt-1">
-            <pv-button class="card-button" @click="openDialog">Purchase</pv-button>
+            <pv-button class="card-button" @click="openPayDialog">Purchase</pv-button>
           </div>
         </template>
       </pv-card>
     </div>
-    <subscription-pay v-if="dialogVisible" @close="closeDialog"></subscription-pay>
+    <subscription-pay v-if="payDialogVisible" @close="closePayDialog" @paymentDone="openDoneDialog"></subscription-pay>
+    <subscription-done v-if="doneDialogVisible" @close="closeDoneDialog"></subscription-done>
   </div>
 </template>
 

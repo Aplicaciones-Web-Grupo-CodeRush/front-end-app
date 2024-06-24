@@ -1,7 +1,9 @@
 <script>
-import { reviewApiService } from '../../../review/services/review-api.service.js';
+import { legalcaseApiService } from '../../../review/services/legalcase-api.service.js';
 import { lawyerApiService } from '../../../lawyer/services/lawyer-api.service.js';
-import {Lawyer} from "../../../lawyer/model/lawyer.entity.js";
+import {ReviewDetails} from "../../../review/model/legalcase.entity.js";
+import { consultationApiService} from "../../../review/services/consultation-api.service.js";
+import { Consultation } from "../../../review/model/consultation.entity.js";
 
 export default {
   name: "reviews",
@@ -10,15 +12,34 @@ export default {
       reviews: [],
       searchTerm: '',
       legalSupportReviews: [],
-      consultationReviews: [],
-      lawyer: new Lawyer()
+      consultation: [],
     }
   },
   created() {
-    reviewApiService.getAll().then(response => {
-      this.reviews = response.data;
-      this.legalSupportReviews = this.reviews.filter(review => review.rType.includes("Legal Service"));
-      this.consultationReviews = this.reviews.filter(review => review.rType.includes("Consultation"));
+    legalcaseApiService.getAll().then(response => {
+      this.legalSupportReviews = response.data.map(review => new ReviewDetails(
+          review.id,
+          review.caseNumber,
+          review.description,
+          review.status
+      ));
+    }).catch(e => {
+      console.log(e);
+    });
+
+    consultationApiService.getAll().then(response => {
+      this.consultation = response.data.map(consultation => new Consultation(
+          consultation.id,
+          consultation.date,
+          consultation.legalIssue,
+          consultation.description,
+          consultation.doctor.id,
+          consultation.doctor.name,
+          consultation.doctor.specialty,
+          consultation.lawyer.id,
+          consultation.lawyer.name,
+          consultation.lawyer.specialty
+      ));
     }).catch(e => {
       console.log(e);
     });
@@ -42,32 +63,36 @@ export default {
         <pv-card class="card-item flex-item">
           <template #title>
             <div  class="card-title">
-              Date: {{ review.time.substr(11,8)}}, {{review.time.substr(0,9)}}<br>
-              By: {{ review.lawyerName }}
+              <!-- Date: {{ review.time.substr(11,8)}}, {{review.time.substr(0,9)}}<br>
+              By: {{ review.lawyerName }} -->
+              <p>Number of Case: {{ review.caseNumber}}</p>
             </div>
           </template>
           <template #content>
-            <p>Costs: {{ review.price }} </p>
-            <h3>Service Description:</h3>
-            <p>{{ review.description }}</p>
+            <h3>Description</h3>
+            <p>{{ review.description }} </p>
+            <h3>Status</h3>
+            <p>{{ review.status}}</p>
           </template>
         </pv-card>
       </div>
     </div>
     <div class="consultation-container">
       <h2>Consultations</h2>
-      <div v-for="(review) in consultationReviews" :key="review.id" class="card-container flex-container">
+      <div v-for="(review) in consultation" :key="review.id" class="card-container flex-container">
         <pv-card class="card-item flex-item">
           <template #title class="card-title">
             <div  class="card-title">
-              Date: {{ review.time.substr(11,8)}}, {{review.time.substr(0,9)}}<br>
-              By: {{ review.lawyerName }}
+              <p> By: {{ review.doctor.name }} </p>
+              <p> Specialty: {{ review.doctor.specialty }}</p>
             </div>
           </template>
           <template #content>
-            <p>Costs: {{ review.price }} </p>
-            <h3>Lawyer's Recommendation:</h3>
-            <p>{{ review.description }}</p>
+            <p>Legal Issue: {{ review.legalIssue }} </p>
+            <p>Description: {{ review.description}}</p>
+            <h3>Lawyer:</h3>
+            <p>{{ review.lawyer.name }}</p>
+            <p>{{ review.lawyer.specialty}}</p>
           </template>
         </pv-card>
       </div>

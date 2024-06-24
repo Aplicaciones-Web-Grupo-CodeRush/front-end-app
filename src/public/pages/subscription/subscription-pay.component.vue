@@ -13,7 +13,11 @@ export default {
     closeDialog() {
       this.dialogVisible = false;
       this.$emit('close');
-    }
+    },
+    onButtonClick() {
+      this.$emit('paymentDone');
+      this.closeDialog();
+    },
   },
   created() {
     this.openDialog();
@@ -59,7 +63,7 @@ export default {
             </div>
           </div>
         </div>
-        <pv-button class="close-button m-0">Continue</pv-button>
+        <pv-button class="close-button m-0" @click="onButtonClick">Continue</pv-button>
       </template>
     </pv-card>
   </pv-dialog>

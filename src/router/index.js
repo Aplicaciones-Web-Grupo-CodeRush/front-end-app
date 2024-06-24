@@ -16,7 +16,7 @@ const router = createRouter({
         { path: '/perfil', component: ProfileUser, meta: { title: 'Perfil'}},
         { path: '/reviews', component: reviewListComponent, meta: {title: 'reviews'}},
         { path: '/educational-resources', component: educationalResourceComponent, meta: {title: 'Educational Resources'}},
-        { path: '/sign-up', component: signUpComponent, meta: { title: 'sign-up'}}, // Asegúrate de agregar tu ruta de registro
+        { path: '/sign-up', component: signUpComponent, meta: { title: 'sign-up'}},
         { path: '/sign-in', component: signInComponent, meta: { title: 'sign-in'}}
 
     ]

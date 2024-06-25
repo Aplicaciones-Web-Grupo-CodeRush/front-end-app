@@ -2,7 +2,7 @@ import http from "../../shared/services/http-common.js";
 
 export class lawyerApiService {
     static getAll() {
-        return http.get("/lawyers");
+        return http.get("/profiles/lawyers");
     }
 
     findByTitle(title) {
@@ -10,6 +10,6 @@ export class lawyerApiService {
     }
 
     getLawyerDetails(id) {
-        return http.get(`/lawyers/${id}`);
+        return http.get(`/profiles/lawyers/${id}`);
     }
 }

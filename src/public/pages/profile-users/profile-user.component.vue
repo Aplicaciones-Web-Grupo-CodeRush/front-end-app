@@ -20,27 +20,27 @@ onMounted(async () => {
         <img class="user-image" :src="user.urlToImage" alt="User image">
       </div>
       <div>
-        <h2>Nombres: {{user.name}}</h2>
-        <h2>Correo: {{user.email}}</h2>
+        <h2>Names: {{user.name}}</h2>
+        <h2>Email: {{user.email}}</h2>
         <h2>DNI: {{user.DNI}}</h2>
       </div>
     </div>
     <div class="content-all2">
       <div>
-        <h2> Consultas realizadas: {{user.queriesMade}}</h2>
-        <h2>Servicios Pagados: {{user.paidServices}}</h2>
+        <h2>Total consultations: {{user.queriesMade}}</h2>
+        <h2>Paid Services so far: {{user.paidServices}}</h2>
       </div>
       <div>
-        <h2>Suscripciones pagadas: {{user.paidSubscriptions}}</h2>
-        <h2>Estado: {{user.state}}</h2>
+        <h2>Paid Subscriptions so far: {{user.paidSubscriptions}}</h2>
+        <h2>Status: {{user.state}}</h2>
       </div>
       <div>
       </div>
     </div>
     <div class="content-all3">
-      <button class="button-profile">Editar perfil</button>
-      <button class="button-profile">Cerrar sesión</button>
-      <button class="button-profile">Borrar cuenta</button>
+      <button class="button-profile">Edit profile</button>
+      <button class="button-profile">Log Out</button>
+      <button class="button-profile">Delete Account</button>
     </div>
   </div>
 </template>
